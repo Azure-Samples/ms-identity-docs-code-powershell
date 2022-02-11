@@ -31,7 +31,7 @@ $TokenRequestParams = @{
     }
 }
 
-# Poll to check if the user has successfully authorized.  If the authorization is still pending, suppress the error.
+# Poll to check if the user has successfully authenticated.  If the authentication is still pending, suppress the error.
 while ([string]::IsNullOrEmpty($TokenRequest.access_token)) {
     $TokenRequest = try {
         Invoke-RestMethod @TokenRequestParams -ErrorAction Stop
