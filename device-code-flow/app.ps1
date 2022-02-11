@@ -35,7 +35,7 @@ $TokenRequestParams = @{
     }
 }
 
-# Poll to check if the user has successfully authenticated.
+# Poll once per second to check if the user has successfully authenticated.
 # If authentication is still pending, suppress the "authorization_pending" error message.
 while ([string]::IsNullOrEmpty($TokenRequest.access_token)) {
     $TokenRequest = try {
