@@ -24,6 +24,7 @@ $DeviceCodeRequest = Invoke-RestMethod @DeviceCodeRequestParams
 Write-Host $DeviceCodeRequest.message
 
 # Configure $TokenRequestParams for the desired $TenantId
+# The grant_type "urn:ietf:params:oauth:grant-type:device_code" is required for the Device Code flow
 $TokenRequestParams = @{
     Method = "POST"
     Uri    = "https://login.microsoftonline.com/$TenantId/oauth2/token"
