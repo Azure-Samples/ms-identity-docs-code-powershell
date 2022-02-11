@@ -57,5 +57,5 @@ $GraphRequestParams = @{
 # Send a request to the Graph API with the token to retrieve the values from /me
 $GraphRequest = Invoke-RestMethod @GraphRequestParams
 
-# Display the response to the console
+# Display the output from Graph to the console
 Write-Output $GraphRequest
