@@ -1,3 +1,6 @@
+# A PowerShell application that demonstrates how to use the
+# Device Code flow to make an API call to Microsoft Graph.
+
 # 'Application (client) ID' of app registration in Azure portal - this value is a GUID
 $ClientId = ""
 
@@ -31,7 +34,8 @@ $TokenRequestParams = @{
     }
 }
 
-# Poll to check if the user has successfully authenticated.  If the authentication is still pending, suppress the error.
+# Poll to check if the user has successfully authenticated.
+# If authentication is still pending, suppress the "authorization_pending" error message.
 while ([string]::IsNullOrEmpty($TokenRequest.access_token)) {
     $TokenRequest = try {
         Invoke-RestMethod @TokenRequestParams -ErrorAction Stop
