@@ -49,7 +49,7 @@ while ([string]::IsNullOrEmpty($TokenRequest.access_token)) {
     Start-Sleep -Seconds 1
 }
 
-# Configure $GraphRequestParams with the access_token
+# Configure $GraphRequestParams with the desired Graph URL and access_token
 $GraphRequestParams = @{
     Method  = "GET"
     Uri     = "https://graph.microsoft.com/v1.0/me"
