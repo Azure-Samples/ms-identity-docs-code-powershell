@@ -83,7 +83,7 @@ ps1 app.ps1
 
 Follow the device code flow instructions that are presented. If everything worked, you should receive a response similar to this:
 
-```json
+```console
 {
   @odata.context    : https://graph.microsoft.com/v1.0/$metadata#users/$entity
   businessPhones    : {+1 (999) 5551001}
