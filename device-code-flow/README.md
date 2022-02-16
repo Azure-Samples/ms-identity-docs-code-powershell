@@ -42,6 +42,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
   id                : 5a55a5dd-1a60-3989-413b-116087b0b941
 }
 ```
+
 ## Prerequisites
 
 - Azure Active Directory (Azure AD) tenant and the permissions or role required for managing app registrations in the tenant.
