@@ -1,12 +1,12 @@
 # A PowerShell application that demonstrates how to use the
 # Device Code flow to make an API call to Microsoft Graph.
 
-# Import the module Microsoft.Identity.Client Authentication Library
+# Import the MSAL module
 Import-Module -Name Microsoft.Identity.Client
 
 # This function (written in C#) will display a message on the console instructing
-# the user how to sign-in and the code that needs to be entered.
-# AcquireTokenWithDeviceCode() will poll the server after firing this
+# the user how to authenticate via their device.
+# AcquireTokenWithDeviceCode() will poll the server after firing the
 # device code callback to look for a successful login with the provided code.
 
 Add-Type -TypeDefinition @"
