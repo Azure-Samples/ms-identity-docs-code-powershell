@@ -24,7 +24,7 @@ urlFragment: ms-identity-docs-code-app-device-code-powershell
 This PowerShell console application authenticates a user via the device code flow, and then makes a request to the Graph API as the authenticated user. The response to the request is printed to the terminal.
 
 ```console
-$ ps app.ps1
+PS .\app.ps1
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXXXXX to authenticate.
 {
   @odata.context    : https://graph.microsoft.com/v1.0/$metadata#users/$entity
@@ -77,8 +77,8 @@ $TenantId = ""
 
 ## Run the application
 
-```bash
-ps1 app.ps1
+```console
+PS .\app.ps1
 ```
 
 Follow the device code flow instructions that are presented. If everything worked, you should receive a response similar to this:
