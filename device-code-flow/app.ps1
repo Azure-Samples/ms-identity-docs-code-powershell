@@ -9,24 +9,7 @@ Import-Module -Name Microsoft.Identity.Client
 # AcquireTokenWithDeviceCode() will poll the server after firing the
 # device code callback to look for a successful login with the provided code.
 
-Add-Type -TypeDefinition @"
-using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Microsoft.Identity.Client;
-
-public static class DeviceCodeHelper
-{
-    public static Func<DeviceCodeResult,Task> GetDeviceCodeResultCallback()
-    {
-        return deviceCodeResult =>
-        {
-            Console.WriteLine(deviceCodeResult.Message);
-            return Task.FromResult(0);
-        };
-    }
-}
-"@ -ReferencedAssemblies Microsoft.Identity.Client
+Add-Type -TypeDefinition (Get-Content -Raw DeviceCodeHelper.cs) -ReferencedAssemblies Microsoft.Identity.Client
 
 # 'Application (client) ID' of app registration in Azure portal - this value is a GUID
 $ClientId = ""
