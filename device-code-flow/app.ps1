@@ -19,10 +19,11 @@ $TenantId = ""
 # Scope permission for Graph
 [string[]] $Scope = "User.Read"
 
-# Build a PublicClientApplication with the provided $ClientId and $TenantId
+# The Device Code flow requires a Public Client Application
+# Build a PublicClientApplication with the $ClientId and $TenantId
 $publicClient = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Create($ClientId).WithTenantId($TenantId)
 
-# Acquire an AccessToken for the desired scope
+# Acquire an AccessToken for the specified scope
 $TokenRequest = $publicClient.Build().AcquireTokenWithDeviceCode($Scope, [DeviceCodeHelper]::GetDeviceCodeResultCallback()).ExecuteAsync().Result
 
 # Configure $GraphRequestParams with the AccessToken received from MSAL as the Bearer token for Graph
