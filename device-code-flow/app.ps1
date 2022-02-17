@@ -8,7 +8,6 @@ Import-Module -Name Microsoft.Identity.Client
 # the user how to authenticate via their device.
 # AcquireTokenWithDeviceCode() will poll the server after firing the
 # device code callback to look for a successful login with the provided code.
-
 Add-Type -TypeDefinition (Get-Content -Raw DeviceCodeHelper.cs) -ReferencedAssemblies Microsoft.Identity.Client
 
 # 'Application (client) ID' of app registration in Azure portal - this value is a GUID
