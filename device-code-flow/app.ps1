@@ -4,7 +4,7 @@
 # Import the MSAL module
 Import-Module -Name Microsoft.Identity.Client
 
-# This function (written in C#) will display a message on the console instructing
+# DeviceCodeHelper.cs will display a message on the console instructing
 # the user how to authenticate via their device.
 # AcquireTokenWithDeviceCode() will poll the server after firing the
 # device code callback to look for a successful login with the provided code.
