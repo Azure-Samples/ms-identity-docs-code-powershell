@@ -48,7 +48,6 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 
 - Azure Active Directory (Azure AD) tenant and the permissions or role required for managing app registrations in the tenant.
 - PowerShell
-- MSAL.NET
 
 ## Setup
 
@@ -75,6 +74,14 @@ $ClientId = ""
 
 # 'Directory (tenant) ID' of app registration in Azure portal - this value is a GUID
 $TenantId = ""
+```
+
+### 3. Install package(s)
+
+To install MSAL.NET libraries:
+
+```console
+Install-Package Microsoft.Identity.Client
 ```
 
 ## Run the application
