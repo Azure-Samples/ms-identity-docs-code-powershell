@@ -78,7 +78,7 @@ $TenantId = ""
 
 ### 3. Install package(s)
 
-To install MSAL.NET libraries:
+To install MSAL.NET libraries in PowerShell:
 
 ```console
 Install-Package Microsoft.Identity.Client
@@ -111,7 +111,7 @@ Follow the device code flow instructions that are presented. If everything worke
 
 ## About the code
 
-This PowerShell console application prompts the user to sign in via their device using a code provided by Microsoft Authentication Library (MSAL).  Upon successful authentication, the script then makes an HTTP GET request to the Microsoft Graph /me endpoint with the user's access token in the HTTP header.  The response from the GET request is then displayed to the console.
+This PowerShell console application prompts the user to sign in via their device using a code provided by Microsoft Authentication Library (MSAL).  Upon running the script, DeviceCodeHelper will poll the server to check for a successful authentication with the provided code.  Upon successful authentication, the script then makes an HTTP GET request to the Microsoft Graph /me endpoint with the user's access token in the HTTP header.  The response from the GET request is then displayed to the console.
 
 ## Reporting problems
 
