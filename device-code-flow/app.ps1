@@ -4,6 +4,11 @@
 # Import the MSAL module
 Import-Module -Name Microsoft.Identity.Client
 
+# Assemblies required by DeviceCodeHelper
+[System.Collections.Generic.List[string]] $RequiredAssemblies = New-Object System.Collections.Generic.List[string]
+$RequiredAssemblies.Add('System.Console.dll')
+$RequiredAssemblies.Add('Microsoft.Identity.Client')
+
 # DeviceCodeHelper, written in C#, will display a message on the console
 # instructing the user how to authenticate via their device.
 # AcquireTokenWithDeviceCode() will poll the server after firing the
@@ -11,7 +16,6 @@ Import-Module -Name Microsoft.Identity.Client
 Add-Type -TypeDefinition @"
 using System;
 using System.Threading.Tasks;
-using System.Collections.Generic;
 using Microsoft.Identity.Client;
 
 public static class DeviceCodeHelper
@@ -25,7 +29,7 @@ public static class DeviceCodeHelper
         };
     }
 }
-"@ -ReferencedAssemblies Microsoft.Identity.Client
+"@ -ReferencedAssemblies $RequiredAssemblies -IgnoreWarnings -WarningAction SilentlyContinue
 
 # 'Application (client) ID' of app registration in Azure portal - this value is a GUID
 $ClientId = ""
