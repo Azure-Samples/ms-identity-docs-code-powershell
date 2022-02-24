@@ -47,7 +47,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 ## Prerequisites
 
 - Azure Active Directory (Azure AD) tenant and the permissions or role required for managing app registrations in the tenant.
-- PowerShell
+- PowerShell 7+
 
 ## Setup
 
