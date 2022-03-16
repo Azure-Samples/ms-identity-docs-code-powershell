@@ -64,7 +64,7 @@ Use these settings in your app registration.
 | **Platform type**                 | _None_                                                                       | No redirect URI required; don't select a platform.                                                 |
 | **Allow public client flows**     | **Yes**                                                                      | Required value for this sample.                                                                    |
 
-> :information_source: **Bold text** in the tables above matches (or is similar to) a UI element in the Azure portal, while `code formatting` indicates a value you enter into a text box in the Azure portal.
+> :information_source: **Bold text** in the table above matches (or is similar to) a UI element in the Azure portal, while `code formatting` indicates a value you enter into a text box in the Azure portal.
 
 ### 2. Update code sample with app registration values
 
