@@ -78,7 +78,7 @@ $TenantId = ""
 
 ### 3. Install package(s)
 
-To install MSAL.NET libraries in PowerShell:
+Install the MSAL.NET libraries in PowerShell:
 
 ```console
 Install-Package Microsoft.Identity.Client
