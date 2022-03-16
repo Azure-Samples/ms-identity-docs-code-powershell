@@ -14,7 +14,7 @@ products:
 urlFragment: ms-identity-docs-code-app-device-code-powershell
 ---
 -->
-
+<!-- SAMPLE ID: DOCS-CODE-031 -->
 # PowerShell | console | user sign-in, protected web API access (Microsoft Graph) | Microsoft identity platform
 
 <!-- Build badges here
