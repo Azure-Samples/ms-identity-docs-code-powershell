@@ -25,7 +25,9 @@ This PowerShell console application authenticates a user via the device code flo
 
 ```console
 .\app.ps1
-
+Checking cache for existing accounts.
+No cached acounts found.
+Initiating a Device Code Flow.
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXXXXX to authenticate.
 
 {
@@ -82,6 +84,7 @@ Install the MSAL.NET libraries in PowerShell:
 
 ```console
 Install-Package Microsoft.Identity.Client
+Install-Package Microsoft.Identity.Client.Extensions.Msal -Scope CurrentUser -RequiredVersion 2.19.6 -SkipDependencies -Destination . -Force
 ```
 
 ## Run the application
