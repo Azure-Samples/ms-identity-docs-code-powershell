@@ -89,7 +89,7 @@ $GraphRequestParams = @{
     Method         = "GET"
     Uri            = "https://graph.microsoft.com/v1.0/me"
     Authentication = "Bearer"
-    Token          = (ConvertTo-SecureString -String $TokenResponse.AccessToken -AsPlainText)
+    Token          = (ConvertTo-SecureString -String $TokenResponse.AccessToken -AsPlainText -Force)
 }
 
 # Send a request to the Graph API with the token to retrieve the values from /me
