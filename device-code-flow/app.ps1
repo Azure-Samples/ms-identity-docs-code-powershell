@@ -33,7 +33,6 @@ public static class DeviceCodeHelper
 }
 "@ -ReferencedAssemblies $RequiredAssemblies -IgnoreWarnings -WarningAction SilentlyContinue
 
-
 # 'Application (client) ID' of app registration in Azure portal - this value is a GUID
 $ClientId = ""
 
@@ -42,10 +41,26 @@ $TenantId = ""
 
 # The Device Code flow requires a Public Client Application
 # Build a PublicClientApplication with the $ClientId and $TenantId
-$publicClient = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Create($ClientId).WithTenantId($TenantId)
+$publicClient = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Create($ClientId).WithTenantId($TenantId).Build()
 
-# Acquire an AccessToken for the User.Read scope
-$TokenResponse = $publicClient.Build().AcquireTokenWithDeviceCode([string[]]::"User.Read", [DeviceCodeHelper]::GetDeviceCodeResultCallback()).ExecuteAsync().Result
+Write-Output "Checking cache for existing accounts."
+# Look for cached access tokens.  This will attempt to utilize existing access tokens if possible.
+# This sample will always result in a cache miss but demonstrates the proper usage pattern.
+[Microsoft.Identity.Client.IAccount[]] $Accounts = $publicClient.GetAccountsAsync().GetAwaiter().GetResult()
+if ($Accounts.Count) {
+    Write-Output "Found an account, using the first one."
+    [Microsoft.Identity.Client.IAccount] $Account = $publicClient.GetAccountsAsync().GetAwaiter().GetResult() | Select-Object -First 1
+    $TokenResponse = $publicClient.AcquireTokenSilent([string[]]::"User.Read", $Account).ExecuteAsync().Result
+} else {
+    # No usable cached access token was found for this scope & account.  An interactive user flow will be required.
+    Write-Output "No cached accounts found."
+}
+
+if ([string]::IsNullOrWhitespace($TokenResponse.AccessToken))   {
+    Write-Output "Initiating a Device Code Flow."
+    # Attempt to acquire an access token for the User.Read scope
+    $TokenResponse = $publicClient.AcquireTokenWithDeviceCode([string[]]::"User.Read",[DeviceCodeHelper]::GetDeviceCodeResultCallback()).ExecuteAsync().Result
+}
 
 # Configure $GraphRequestParams with the AccessToken received from MSAL as the Bearer token for Graph
 $GraphRequestParams = @{
