@@ -84,7 +84,6 @@ Install the MSAL.NET libraries in PowerShell:
 
 ```console
 Install-Package Microsoft.Identity.Client
-Install-Package Microsoft.Identity.Client.Extensions.Msal -Scope CurrentUser -RequiredVersion 2.19.6 -SkipDependencies -Destination . -Force
 ```
 
 ## Run the application
