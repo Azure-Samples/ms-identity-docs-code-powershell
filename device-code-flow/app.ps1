@@ -45,7 +45,7 @@ $publicClient = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Crea
 
 Write-Output "Checking cache for existing accounts."
 # Look for cached access tokens.  This will attempt to utilize existing access tokens if possible.
-# This sample just serves to demonstrate the proper usage pattern.
+# This sample will always result in a cache miss but demonstrates the proper usage pattern.
 [Microsoft.Identity.Client.IAccount[]] $Accounts = $publicClient.GetAccountsAsync().GetAwaiter().GetResult()
 if ($Accounts.Count) {
     Write-Output "Found an account, using the first one."
@@ -58,7 +58,7 @@ if ($Accounts.Count) {
 
 if ([string]::IsNullOrWhitespace($TokenResponse.AccessToken))   {
     Write-Output "Initiating a Device Code Flow."
-    # Attempt to acquire an AccessToken for the User.Read scope
+    # Attempt to acquire an access token for the User.Read scope
     $TokenResponse = $publicClient.AcquireTokenWithDeviceCode([string[]]::"User.Read",[DeviceCodeHelper]::GetDeviceCodeResultCallback()).ExecuteAsync().Result
 }
 
