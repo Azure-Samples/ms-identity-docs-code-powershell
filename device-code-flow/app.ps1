@@ -54,6 +54,7 @@ if ($Accounts.Count) {
 } else {
     # No usable cached access token was found for this scope & account.  An interactive user flow will be required.
     Write-Output "No cached accounts found."
+    $TokenResponse = @{AccessToken = ''}
 }
 
 if ([string]::IsNullOrWhitespace($TokenResponse.AccessToken))   {
