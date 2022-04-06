@@ -26,7 +26,7 @@ This PowerShell console application authenticates a user via the device code flo
 ```console
 .\app.ps1
 Checking cache for existing accounts.
-No cached acounts found.
+No cached accounts found.
 Initiating a Device Code Flow.
 To sign in, use a web browser to open the page https://microsoft.com/devicelogin and enter the code XXXXXXXXX to authenticate.
 
