@@ -33,54 +33,32 @@ public static class DeviceCodeHelper
 }
 "@ -ReferencedAssemblies $RequiredAssemblies -IgnoreWarnings -WarningAction SilentlyContinue
 
-# Include the MsalCacheHelper used for token caching
-if (-not ('Microsoft.Identity.Client.Extensions.Msal.MsalCacheHelper' -as [type])) {
-    try {
-        Add-Type -Path (Join-Path (Split-Path $PSCommandPath) 'Microsoft.Identity.Client.Extensions.Msal.2.19.6\lib\netcoreapp2.1\Microsoft.Identity.Client.Extensions.Msal.dll')
-    }
-    catch {
-        Write-Error $_
-        return
-    }
-}
-
 # 'Application (client) ID' of app registration in Azure portal - this value is a GUID
 $ClientId = ""
 
 # 'Directory (tenant) ID' of app registration in Azure portal - this value is a GUID
 $TenantId = ""
 
-# Set to 0 by default.  Set this value to 1 to clear the cache.
-$clearCache = 1
-
 # The Device Code flow requires a Public Client Application
 # Build a PublicClientApplication with the $ClientId and $TenantId
 $publicClient = [Microsoft.Identity.Client.PublicClientApplicationBuilder]::Create($ClientId).WithTenantId($TenantId).Build()
 
-# Setup caching.  In this sample a local file named "msal-cache.bin" is where cached tokens will be stored.
-$cacheDir = Split-Path $PSCommandPath
-$storageBuilder = New-Object Microsoft.Identity.Client.Extensions.Msal.StorageCreationPropertiesBuilder("msal-cache.bin", $cacheDir, $ClientId)
-$cacheHelper = [Microsoft.Identity.Client.Extensions.Msal.MsalCacheHelper]::CreateAsync($storageBuilder.Build()).GetAwaiter().GetResult()
-$cacheHelper.RegisterCache($publicClient.UserTokenCache)
-
-if ($clearCache -eq 1)  {
-    Write-Output "Clearing the cache."
-    $cacheHelper.Clear()
-}
-
 Write-Output "Checking cache for existing accounts."
+# Look for cached access tokens.  This will attempt to utilize existing access tokens if possible.
+# This sample just serves to demonstrate the proper usage pattern.
 [Microsoft.Identity.Client.IAccount[]] $Accounts = $publicClient.GetAccountsAsync().GetAwaiter().GetResult()
 if ($Accounts.Count) {
     Write-Output "Found an account, using the first one."
     [Microsoft.Identity.Client.IAccount] $Account = $publicClient.GetAccountsAsync().GetAwaiter().GetResult() | Select-Object -First 1
     $TokenResponse = $publicClient.AcquireTokenSilent([string[]]::"User.Read", $Account).ExecuteAsync().Result
 } else {
-    Write-Output "No cached acounts found."
+    # No usable cached access token was found for this scope & account.  An interactive user flow will be required.
+    Write-Output "No cached accounts found."
 }
 
 if ([string]::IsNullOrWhitespace($TokenResponse.AccessToken))   {
     Write-Output "Initiating a Device Code Flow."
-    # Acquire an AccessToken for the User.Read scope
+    # Attempt to acquire an AccessToken for the User.Read scope
     $TokenResponse = $publicClient.AcquireTokenWithDeviceCode([string[]]::"User.Read",[DeviceCodeHelper]::GetDeviceCodeResultCallback()).ExecuteAsync().Result
 }
 
@@ -93,7 +71,7 @@ $GraphRequestParams = @{
 }
 
 # Send a request to the Graph API with the token to retrieve the values from /me
-$GraphResponse = Invoke-RestMethod @GraphRequestParams | ConvertTo-Json
+$GraphResponse = Invoke-RestMethod @GraphRequestParams
 
 # Display the response to the console
 Write-Output $GraphResponse
