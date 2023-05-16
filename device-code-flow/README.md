@@ -1,19 +1,18 @@
-<!-- Keeping yaml frontmatter commented out for now
 ---
 # Metadata required by https://docs.microsoft.com/samples/browse/
 # Metadata properties: https://review.docs.microsoft.com/help/contribute/samples/process/onboarding?branch=main#add-metadata-to-readme
 languages:
 - PowerShell
 page_type: sample
-name: "PowerShell console application that makes a request to the Graph API via the Device Code flow"
-description: "This PowerShell console application uses the device code flow for authentication and then makes a request to Microsoft Graph for the user's profile data."
+name: PowerShell console application that makes a request to the Graph API via the Device Code flow
+description: This PowerShell console application uses the device code flow for authentication and then makes a request to Microsoft Graph for the user's profile data.
 products:
 - azure
 - azure-active-directory
 - ms-graph
 urlFragment: ms-identity-docs-code-app-device-code-powershell
 ---
--->
+
 <!-- SAMPLE ID: DOCS-CODE-031 -->
 # PowerShell | console | user sign-in, protected web API access (Microsoft Graph) | Microsoft identity platform
 
