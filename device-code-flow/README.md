@@ -47,7 +47,7 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 
 ## Prerequisites
 
-- A Microsoft Entra ID tenant and the permissions or role required for managing app registrations in the tenant.
+- A Microsoft Entra tenant and the permissions or role required for managing app registrations in the tenant.
 - PowerShell 7+
 
 ## Setup
