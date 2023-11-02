@@ -33,11 +33,11 @@ public static class DeviceCodeHelper
 }
 "@ -ReferencedAssemblies $RequiredAssemblies -IgnoreWarnings -WarningAction SilentlyContinue
 
-# 'Application (client) ID' of app registration in Azure portal - this value is a GUID
-$ClientId = ""
+# 'Application (client) ID' of app registration in the Microsoft Entra admin center - this value is a GUID
+$ClientId = "Enter_the_Application_Id_Here"
 
-# 'Directory (tenant) ID' of app registration in Azure portal - this value is a GUID
-$TenantId = ""
+# 'Directory (tenant) ID' of app registration in the Microsoft Entra admin center - this value is a GUID
+$TenantId = "Enter_the_Tenant_ID_Here"
 
 # The Device Code flow requires a Public Client Application
 # Build a PublicClientApplication with the $ClientId and $TenantId
