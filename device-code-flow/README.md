@@ -31,17 +31,17 @@ To sign in, use a web browser to open the page https://microsoft.com/devicelogin
 
 {
   @odata.context    : https://graph.microsoft.com/v1.0/$metadata#users/$entity
-  businessPhones    : {+1 (999) 5551001}
+  businessPhones    : {+1 (000) 1112222}
   displayName       : Contoso Employee
   givenName         : Contoso
   jobTitle          : Worker
   mail              : cemployee@contoso.com
-  mobilePhone       : 1 999-555-1001
+  mobilePhone       : 1 000-111-2222
   officeLocation    : Contoso Plaza/F30
   preferredLanguage :
   surname           : Employee
   userPrincipalName : contoso_employee@contoso.com
-  id                : 5a55a5dd-1a60-3989-413b-116087b0b941
+  id                : 00aa00aa-bb11-cc22-dd33-44ee44ee44ee
 }
 ```
 
@@ -96,17 +96,17 @@ Follow the device code flow instructions that are presented. If everything worke
 ```console
 {
   @odata.context    : https://graph.microsoft.com/v1.0/$metadata#users/$entity
-  businessPhones    : {+1 (999) 5551001}
+  businessPhones    : {+1 (000) 1112222}
   displayName       : Contoso Employee
   givenName         : Contoso
   jobTitle          : Worker
   mail              : cemployee@contoso.com
-  mobilePhone       : 1 999-555-1001
+  mobilePhone       : 1 000-111-2222
   officeLocation    : Contoso Plaza/F30
   preferredLanguage :
   surname           : Employee
   userPrincipalName : contoso_employee@contoso.com
-  id                : 5a55a5dd-1a60-3989-413b-116087b0b941
+  id                : 00aa00aa-bb11-cc22-dd33-44ee44ee44ee
 }
 ```
 
